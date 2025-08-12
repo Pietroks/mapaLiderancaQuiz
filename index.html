@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mapa das Sementes – Autodiagnóstico e Radar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Mapa das Sementes da Liderança</h1>
+        <p class="desc">Responda com honestidade para gerar seu mapa de autoconhecimento.</p>
+
+        <details class="instructions-accordion">
+          <summary>Como preencher o autodiagnóstico?</summary>
+          <div class="instructions-content">
+            <p><strong>1. Avalie cada afirmação com uma nota de 1 a 5:</strong></p>
+            <ul>
+              <li><strong>1:</strong> Discordo totalmente / Não corresponde à minha experiência</li>
+              <li><strong>2:</strong> Discordo parcialmente</li>
+              <li><strong>3:</strong> Às vezes</li>
+              <li><strong>4:</strong> Concordo parcialmente</li>
+              <li><strong>5:</strong> Concordo totalmente / Reflete bem a minha experiência</li>
+            </ul>
+            <p><strong>2. Entenda a estrutura:</strong></p>
+            <ul>
+              <li>O questionário tem 4 eixos com 24 questões.</li>
+              <li><strong>Bloco A</strong> mede seu comportamento e competência.</li>
+              <li><strong>Bloco B</strong> mede sua percepção e sensação sobre a mesma competência.</li>
+            </ul>
+            <p><strong>3. Seja honesto(a):</strong> Este exercício é para autoconhecimento, não para uma avaliação externa.</p>
+            <p>
+              <strong>4. Gere seu mapa:</strong> Ao final, clique em "Gerar meu mapa" para visualizar seu perfil no gráfico e receber
+              recomendações.
+            </p>
+          </div>
+        </details>
+
+        <form id="questionario">
+          <div class="question-grid">
+            <fieldset>
+              <h2>1. Iniciativa e Protagonismo</h2>
+              <h3>Bloco A: Competência</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q1">Tomo a frente quando percebo que algo precisa ser feito.</label>
+                  <select id="q1" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q2">Proponho ideias mesmo sem ter um cargo formal.</label>
+                  <select id="q2" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q3">Crio movimento quando o grupo está parado.</label>
+                  <select id="q3" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+              <h3>Bloco B: Percepção/Sensação</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q4">Sinto-me confortável ao iniciar algo novo.</label>
+                  <select id="q4" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q5">Quando lidero sem “permissão”, fico mais motivado do que ansioso.</label>
+                  <select id="q5" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q6">Vejo sentido e energia nesses começos, não apenas pressão.</label>
+                  <select id="q6" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <h2>2. Influência e Confiança</h2>
+              <h3>Bloco A: Competência</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q7">Pessoas me procuram para pedir opinião ou orientação.</label
+                  ><select id="q7" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q8">Consigo engajar colegas em metas comuns.</label
+                  ><select id="q8" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q9">Minha atuação gera confiança no grupo.</label
+                  ><select id="q9" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+              <h3>Bloco B: Percepção/Sensação</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q10">Quando sou referência, sinto-me preparado e sereno.</label
+                  ><select id="q10" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q11">Não me sinto sobrecarregado quando esperam direção de mim.</label
+                  ><select id="q11" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q12">Sinto que mereço a confiança que recebo.</label
+                  ><select id="q12" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <h2>3. Aprendizado e Autocrítica</h2>
+              <h3>Bloco A: Competência</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q13">Busco feedback e aplico melhorias.</label
+                  ><select id="q13" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q14">Transformo erros em aprendizagem concreta.</label
+                  ><select id="q14" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q15">Uno teoria e prática nas decisões que tomo.</label
+                  ><select id="q15" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+              <h3>Bloco B: Percepção/Sensação</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q16">Feedback me anima a evoluir, não me desanima.</label
+                  ><select id="q16" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q17">Sinto que estou crescendo como líder mês a mês.</label
+                  ><select id="q17" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q18">Encaro desafios como oportunidade, não como ameaça.</label
+                  ><select id="q18" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <h2>4. Ética e Resiliência</h2>
+              <h3>Bloco A: Competência</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q19">Considero efeitos éticos antes de decidir.</label
+                  ><select id="q19" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q20">Ajusto o rumo quando percebo incoerências.</label
+                  ><select id="q20" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q21">Estimulo discordâncias respeitosas para melhorar decisões.</label
+                  ><select id="q21" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+              <h3>Bloco B: Percepção/Sensação</h3>
+              <div class="question-group">
+                <div class="question-item">
+                  <label for="q22">Em dilemas morais, mantenho clareza e calma.</label
+                  ><select id="q22" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q23">Tenho coragem para sustentar valores sob pressão.</label
+                  ><select id="q23" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+                <div class="question-item">
+                  <label for="q24">Sinto-me íntegro ao comparar meios e fins das minhas decisões.</label
+                  ><select id="q24" class="question-select">
+                    <option value="" disabled selected>Selecione a nota</option>
+                    <option value="1">1 = Discordo totalmente</option>
+                    <option value="2">2 = Discordo parcialmente</option>
+                    <option value="3">3 = Às vezes</option>
+                    <option value="4">4 = Concordo parcialmente</option>
+                    <option value="5">5 = Concordo totalmente</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="final-actions">
+            <div class="name-input-group">
+              <label for="userName">Seu Nome:</label>
+              <input type="text" id="userName" placeholder="Digite seu nome para gerar o relatório" required />
+            </div>
+            <div class="action-buttons">
+              <button id="btnRender" type="button">Gerar meu mapa</button>
+              <button id="btnReset" type="button">Limpar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="card" id="resultsCard" style="display: none">
+        <h1 id="resultsTitle"></h1>
+        <canvas id="radar"></canvas>
+        <div id="interpretacoes" class="interpretacoes-grid"></div>
+        <div class="final-actions" style="justify-content: flex-end">
+          <button id="btnExport" type="button">Exportar Gráfico (PNG)</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
