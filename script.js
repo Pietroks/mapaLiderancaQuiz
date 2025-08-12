@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
+  // --- FUNÇÃO RENDER ATUALIZADA ---
   function render() {
     const userName = document.getElementById("userName").value;
     if (!userName.trim()) {
@@ -67,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Verifica se todos os campos foram selecionados
     for (let i = 1; i <= 24; i++) {
       if (getInputValue(`q${i}`) === 0) {
         alert(`Por favor, selecione uma nota para a questão de número ${i}.`);
@@ -75,8 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    document.getElementById("resultsCard").style.display = "block";
-    document.getElementById("resultsTitle").textContent = `Mapa e Recomendações de ${userName}`;
+    const resultsCard = document.getElementById("resultsCard");
+    resultsCard.style.display = "block";
+    document.getElementById("resultsTitle").innerHTML = `Mapa e Recomendações de <span class="highlight-name">${userName}</span>`;
     const scores = calculateScores();
     const interpretacoesDiv = document.getElementById("interpretacoes");
     interpretacoesDiv.innerHTML = "";
@@ -95,30 +96,41 @@ document.addEventListener("DOMContentLoaded", () => {
       chart.destroy();
     }
 
-    chart = new Chart(ctx, {
-      type: "radar",
-      data: {
-        labels,
-        datasets: [
-          {
-            label: "Competência (interno)",
-            data: scores.competencia,
-            fill: true,
-            backgroundColor: "rgba(59, 130, 246, 0.2)",
-            borderColor: "rgb(59, 130, 246)",
-            pointBackgroundColor: "rgb(59, 130, 246)",
+    // ---- LÓGICA ATUALIZADA PARA ESCOLHER TIPO E OPÇÕES DO GRÁFICO ----
+    const isMobile = window.innerWidth <= 768;
+    const chartType = isMobile ? "bar" : "radar";
+    let chartOptions;
+
+    if (isMobile) {
+      // Opções para o Gráfico de Barras Horizontais (Mobile)
+      chartOptions = {
+        indexAxis: "y", // Eixo principal se torna o Y, criando barras horizontais
+        responsive: true,
+        maintainAspectRatio: false,
+        aspectRatio: 0.8, // Proporção para mobile, pode ajustar se necessário
+        scales: {
+          x: {
+            beginAtZero: true,
+            min: 0,
+            max: 10,
+            ticks: { color: "white" },
+            grid: { color: "rgba(148, 163, 184, 0.2)" },
           },
-          {
-            label: "Percepção (externo)",
-            data: scores.percepcao,
-            fill: true,
-            backgroundColor: "rgba(34, 197, 94, 0.2)",
-            borderColor: "rgb(34, 197, 94)",
-            pointBackgroundColor: "rgb(34, 197, 94)",
+          y: {
+            ticks: { color: "white", font: { size: 11 } },
+            grid: { display: false },
           },
-        ],
-      },
-      options: {
+        },
+        plugins: {
+          legend: {
+            position: "top",
+            labels: { color: "#e2e8f0", font: { size: 12 } },
+          },
+        },
+      };
+    } else {
+      // Opções para o Gráfico de Radar (Desktop)
+      chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -133,12 +145,40 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         },
         plugins: {
-          legend: { position: "top", labels: { color: "#e2e8f0", font: { size: 14 } } },
+          legend: {
+            position: "top",
+            labels: { color: "#e2e8f0", font: { size: 14 } },
+          },
         },
+      };
+    }
+    // ---- FIM DA LÓGICA ATUALIZADA ----
+
+    chart = new Chart(ctx, {
+      type: chartType, // Usa o tipo de gráfico dinâmico ('bar' ou 'radar')
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Competência (interno)",
+            data: scores.competencia,
+            backgroundColor: "rgba(59, 130, 246, 0.5)",
+            borderColor: "rgb(59, 130, 246)",
+            borderWidth: 1,
+          },
+          {
+            label: "Percepção (externo)",
+            data: scores.percepcao,
+            backgroundColor: "rgba(34, 197, 94, 0.5)",
+            borderColor: "rgb(34, 197, 94)",
+            borderWidth: 1,
+          },
+        ],
       },
+      options: chartOptions,
     });
 
-    document.getElementById("resultsCard").scrollIntoView({ behavior: "smooth" });
+    resultsCard.scrollIntoView({ behavior: "smooth" });
   }
 
   document.getElementById("btnRender").addEventListener("click", render);
@@ -163,21 +203,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Usa html2canvas para "fotografar" o card de resultados inteiro
     html2canvas(resultsCard, {
-      backgroundColor: "#121821", // Define a cor de fundo para a imagem
-      scale: 2, // Aumenta a resolução da imagem em 2x
+      backgroundColor: "#121821",
+      scale: 2,
     }).then((canvas) => {
-      // Pega o nome do usuário para personalizar o arquivo
       const userName = document.getElementById("userName").value || "usuario";
       const formattedName = userName.trim().toLowerCase().replace(/\s+/g, "_");
 
-      // Cria um link temporário para o download
       const a = document.createElement("a");
-      a.href = canvas.toDataURL("image/png", 1.0); // Converte o novo canvas em uma imagem
-      a.download = `mapa_lideranca_${formattedName}.png`; // Define o nome do arquivo
-      a.click(); // Simula o clique para baixar
-      a.remove(); // Remove o link
+      a.href = canvas.toDataURL("image/png", 1.0);
+      a.download = `mapa_lideranca_${formattedName}.png`;
+      a.click();
+      a.remove();
     });
   });
 });
